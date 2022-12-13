@@ -1,0 +1,15 @@
+steps:
+  - name: "gcr.io/kaniko-project/executor:v1.6.0"
+    id: build
+    waitFor: ["-"]
+    args:
+      - --dockerfile=/workspace/web_app/Dockerfile
+      - --context=/workspace/web_app/
+      - --destination=gcr.io/$PROJECT_ID/web-app
+      - --cache=true
+      - --cache-ttl=24h
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: 1800s

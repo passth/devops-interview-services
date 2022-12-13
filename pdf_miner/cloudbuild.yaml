@@ -1,0 +1,15 @@
+steps:
+  - name: "gcr.io/kaniko-project/executor:v1.6.0"
+    id: build
+    waitFor: ["-"]
+    args:
+      - --dockerfile=/workspace/pdf_miner/Dockerfile
+      - --context=/workspace/pdf_miner/
+      - --destination=gcr.io/$PROJECT_ID/pdf-miner
+      - --cache=true
+      - --cache-ttl=24h
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: 1800s

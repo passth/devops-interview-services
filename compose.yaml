@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  webapp:
+    build: ./web_app
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: 'django-insecure-d462upu)4h4fx!8vl1%g+^#rjk)m#y^1tsul89bq^ttgni+9k='
+      PDF_MINER_API_URL: 'http://pdfminer:8000/'
+      DEBUG: 'True'
+    volumes:
+      - ./web_app:/app
+
+  pdfminer:
+    build: ./pdf_miner
+    environment:
+      SECRET_KEY: 'django-insecure-d462upu)4h4fx!8vl1%g+^#rjk)m#y^1tsul89bq^ttgni+9k='
+      DEBUG: 'True'
+    volumes:
+      - ./pdf_miner:/app

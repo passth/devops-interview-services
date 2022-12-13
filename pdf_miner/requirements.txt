@@ -1,0 +1,4 @@
+Django==4.1.4
+djangorestframework==3.14.0
+pdfminer.six==20221105
+django-environ==0.9.0
