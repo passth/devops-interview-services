@@ -1,5 +1,6 @@
 import environ
 from pathlib import Path
+from google.oauth2 import service_account
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -90,3 +91,15 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PDF_MINER_API_URL = env('PDF_MINER_API_URL')
+
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = env('GS_BUCKET_NAME')
+
+GS_CREDENTIALS_FILE = env('GS_CREDENTIALS_FILE', default=None)
+
+if GS_CREDENTIALS_FILE:
+    GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+        GS_CREDENTIALS_FILE
+    )
+else:
+    GS_CREDENTIALS = service_account.Credentials()

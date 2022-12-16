@@ -4,6 +4,7 @@ from django.views.generic import FormView
 from django.shortcuts import render
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.conf import settings
+from .models import UploadedFile
 
 
 class IndexForm(forms.Form):
@@ -15,7 +16,11 @@ class IndexView(FormView):
     template_name = "core/index.html"
 
     def form_valid(self, form):
-        text = self.extract_text(form.files['file'])
+        file = form.files['file']
+        text = self.extract_text(file)
+
+        UploadedFile.objects.create(file=file, text=text)
+
         return render(
             self.request,
             template_name=self.template_name,

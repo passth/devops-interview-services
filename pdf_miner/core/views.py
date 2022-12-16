@@ -4,7 +4,6 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from pdfminer.high_level import extract_text
 
-
 class ExtractPDF(APIView):
     def post(self, request, *args, **kwargs):
         pdf_file = request.FILES.get('file')
