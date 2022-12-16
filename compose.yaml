@@ -8,8 +8,11 @@ services:
       SECRET_KEY: 'django-insecure-d462upu)4h4fx!8vl1%g+^#rjk)m#y^1tsul89bq^ttgni+9k='
       PDF_MINER_API_URL: 'http://pdfminer:8000/'
       DEBUG: 'True'
+      DB_URL: postgres://passthrough:passthrough@webapp_db:5432/web_app
     volumes:
       - ./web_app:/app
+    depends_on:
+      - webapp_db
 
   pdfminer:
     build: ./pdf_miner
@@ -18,3 +21,10 @@ services:
       DEBUG: 'True'
     volumes:
       - ./pdf_miner:/app
+
+  webapp_db:
+    image: postgres
+    environment:
+      POSTGRES_USER: passthrough
+      POSTGRES_PASSWORD: passthrough
+      POSTGRES_DB: web_app
