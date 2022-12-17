@@ -9,4 +9,6 @@ A Python server that renders the user interface, accepts files from users, and c
 | `SECRET_KEY` | A string that is used to provide cryptographic signing, and should be kept secret. | django-insecure-d462upu)4h4fx!8vl1%g+^#rjk)m#y^1tsul89bq^ttgni+9k= |
 | `DB_URL` | The connection string to the database | postgres://user:password@host:port/dbname |
 | `ALLOWED_HOSTS` | A list of host/domain names that your Django site is allowed to serve. The format for the environment variable is a comma separated string. | localhost,otherdomain |
-| `PDF_MINER_API_URL` | The base URL to access the PDF miner application | http://localhost:8001/
+| `PDF_MINER_API_URL` | The base URL to access the PDF miner application | http://localhost:8001/ |
+| `GS_BUCKET_NAME` | Google Storage's bucket name to store uploaded files | web_app_bucket |
+| `GS_CREDENTIALS_FILE` | The path to a service account file. If this variable is not available, it will use GOOGLE_APPLICATION_CREDENTIALS which is typically available in google cloud services. | /path/bucket_service_account.json |
