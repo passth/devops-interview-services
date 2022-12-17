@@ -1,6 +1,6 @@
 # PDF miner
 
-A Python server that reads PDF files and returns the text content from the endpoint.
+A Python server that reads PDF files and returns the text content from the endpoint. Use the instructions at the parent folder to execute this application locally.
 
 ## Environment variables
 
